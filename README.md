@@ -29,3 +29,18 @@ name          time/op
 ```
 
 So, that package is more optimal at more 30 times.
+
+#### example
+
+```golang
+func Example() {
+	x := 2.0
+	r2 := pow.E2(x) // math.Pow(x, 2.0)
+	r3 := pow.E3(x) // math.Pow(x, 3.0)
+	fmt.Fprintf(os.Stdout, "%.4f\n", r2)
+	fmt.Fprintf(os.Stdout, "%.4f\n", r3)
+	// Output:
+	// 4.0000
+	// 8.0000
+}
+```

@@ -3,6 +3,7 @@ package pow_test
 import (
 	"fmt"
 	"math"
+	"os"
 	"testing"
 
 	"github.com/Konstantin8105/pow"
@@ -52,6 +53,17 @@ func TestE3(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Example() {
+	x := 2.0
+	r2 := pow.E2(x) // math.Pow(x, 2.0)
+	r3 := pow.E3(x) // math.Pow(x, 3.0)
+	fmt.Fprintf(os.Stdout, "%.4f\n", r2)
+	fmt.Fprintf(os.Stdout, "%.4f\n", r3)
+	// Output:
+	// 4.0000
+	// 8.0000
 }
 
 func Benchmark(b *testing.B) {
