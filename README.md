@@ -1,7 +1,19 @@
 # pow
 replace golang math.Pow to optimal
 
-*benchmark*
+#### godoc
+
+```
+FUNCTIONS
+
+func E2(x float64) float64
+    E2 function replace `math.Pow(x,2.0)`
+
+func E3(x float64) float64
+    E3 function replace `math.Pow(x,3.0)`
+```
+
+#### benchmark
 
 ```
 go test -bench=. -count=5 > bench.txt
