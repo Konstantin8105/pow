@@ -55,6 +55,29 @@ func TestE3(t *testing.T) {
 	}
 }
 
+func TestEn(t *testing.T) {
+	tcs := []struct {
+		x float64
+		e int
+	}{
+		{1.0, 1.0},
+		{2.0, 8.0},
+		{3.0, 27.0},
+		{1.0, -1.0},
+		{2.0, -8.0},
+		{3.0, -27.0},
+	}
+	for i := range tcs {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
+			a := pow.En(tcs[i].x, tcs[i].e)
+			e := math.Pow(tcs[i].x, float64(tcs[i].e))
+			if a != e && math.IsNaN(a) != math.IsNaN(e) {
+				t.Errorf("got %14e , want %.14e", a, e)
+			}
+		})
+	}
+}
+
 func Example() {
 	x := 2.0
 	r2 := pow.E2(x) // math.Pow(x, 2.0)
@@ -79,6 +102,11 @@ func Benchmark(b *testing.B) {
 			y = pow.E2(x)
 		}
 	})
+	b.Run("pow.En2", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			y = pow.En(x, 2)
+		}
+	})
 	b.Run("math.Pow3", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			y = math.Pow(x, 3.0)
@@ -87,6 +115,21 @@ func Benchmark(b *testing.B) {
 	b.Run("pow.E3", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			y = pow.E3(x)
+		}
+	})
+	b.Run("pow.En3", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			y = pow.En(x, 3)
+		}
+	})
+	b.Run("math.Pow(151)", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			y = math.Pow(x, 2.0)
+		}
+	})
+	b.Run("pow.En(151)", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			y = pow.En(x, 51)
 		}
 	})
 	_ = y
