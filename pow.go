@@ -33,7 +33,7 @@ func En(x float64, e int) float64 {
 		c   uint8
 	)
 
-	for n > 1 {
+	for 1 < n {
 		tmp = x
 		c = 1
 		for c <= n/2 {
