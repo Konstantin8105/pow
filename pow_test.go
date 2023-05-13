@@ -133,6 +133,18 @@ func Example() {
 	// 8.0000
 }
 
+// cpu: Intel(R) Xeon(R) CPU           X5550  @ 2.67GHz
+// Benchmark/math.Pow2-16         	35098486	        34.05 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.E2-16            	1000000000	         1.028 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.En2-16           	142912671	         8.224 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/math.Pow3-16         	35733325	        35.76 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.E3-16            	1000000000	         1.056 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.En3-16           	126317251	         9.516 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/math.Pow4-16         	33246009	        36.10 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.E4-16            	1000000000	         1.021 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.En4-16           	126656416	         9.524 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/math.Pow(x,_51)-16   	27771769	        43.08 ns/op	       0 B/op	       0 allocs/op
+// Benchmark/pow.En(x,_51)-16     	48447409	        24.23 ns/op	       0 B/op	       0 allocs/op
 func Benchmark(b *testing.B) {
 	x := math.Pi
 	var y float64
